@@ -1,0 +1,15 @@
+-
+  title: "查询菜单列表"
+  request:
+    method: get
+    url: /dev-api/system/menu/list
+  validate:
+    code: 200
+
+-
+  title: "查询菜单树下拉"
+  request:
+    method: get
+    url: /dev-api/system/menu/treeselect
+  validate:
+    code: 200

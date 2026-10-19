@@ -1,0 +1,60 @@
+-
+  title: "查询用户列表"
+  request:
+    method: get
+    url: /dev-api/system/user/list
+    params:
+      pageNum: 1
+      pageSize: 10
+  validate:
+    code: 200
+    has_rows: true
+
+-
+  title: "按用户名搜索用户"
+  request:
+    method: get
+    url: /dev-api/system/user/list
+    params:
+      pageNum: 1
+      pageSize: 10
+      userName: admin
+  validate:
+    code: 200
+    has_rows: true
+
+-
+  title: "按手机号搜索用户"
+  request:
+    method: get
+    url: /dev-api/system/user/list
+    params:
+      pageNum: 1
+      pageSize: 10
+      phonenumber: "18888888888"
+  validate:
+    code: 200
+
+-
+  title: "按状态筛选用户-正常"
+  request:
+    method: get
+    url: /dev-api/system/user/list
+    params:
+      pageNum: 1
+      pageSize: 10
+      status: "0"
+  validate:
+    code: 200
+
+-
+  title: "按状态筛选用户-停用"
+  request:
+    method: get
+    url: /dev-api/system/user/list
+    params:
+      pageNum: 1
+      pageSize: 10
+      status: "1"
+  validate:
+    code: 200

@@ -1,0 +1,22 @@
+-
+  title: "查询岗位列表"
+  request:
+    method: get
+    url: /dev-api/system/post/list
+    params:
+      pageNum: 1
+      pageSize: 10
+  validate:
+    code: 200
+
+-
+  title: "按岗位名称搜索"
+  request:
+    method: get
+    url: /dev-api/system/post/list
+    params:
+      pageNum: 1
+      pageSize: 10
+      postName: 董事长
+  validate:
+    code: 200

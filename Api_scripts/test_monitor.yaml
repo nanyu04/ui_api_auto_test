@@ -1,0 +1,37 @@
+-
+  title: "查询服务器信息"
+  request:
+    method: get
+    url: /dev-api/monitor/server
+  validate:
+    code: 200
+
+-
+  title: "查询在线用户列表"
+  request:
+    method: get
+    url: /dev-api/monitor/online/list
+    params:
+      pageNum: 1
+      pageSize: 10
+  validate:
+    code: 200
+
+-
+  title: "查询定时任务列表"
+  request:
+    method: get
+    url: /dev-api/monitor/job/list
+    params:
+      pageNum: 1
+      pageSize: 10
+  validate:
+    code: 200
+
+-
+  title: "查询缓存信息"
+  request:
+    method: get
+    url: /dev-api/monitor/cache
+  validate:
+    code: 200

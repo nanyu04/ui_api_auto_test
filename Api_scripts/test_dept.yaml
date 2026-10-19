@@ -1,0 +1,15 @@
+-
+  title: "查询部门列表"
+  request:
+    method: get
+    url: /dev-api/system/dept/list
+  validate:
+    code: 200
+
+-
+  title: "查询部门树下拉"
+  request:
+    method: get
+    url: /dev-api/system/dept/treeselect
+  validate:
+    code: 200
