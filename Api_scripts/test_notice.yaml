@@ -1,0 +1,22 @@
+-
+  title: "查询通知公告列表"
+  request:
+    method: get
+    url: /dev-api/system/notice/list
+    params:
+      pageNum: 1
+      pageSize: 10
+  validate:
+    code: 200
+
+-
+  title: "按公告标题搜索"
+  request:
+    method: get
+    url: /dev-api/system/notice/list
+    params:
+      pageNum: 1
+      pageSize: 10
+      noticeTitle: 温馨
+  validate:
+    code: 200

@@ -1,0 +1,22 @@
+-
+  title: "查询字典类型列表"
+  request:
+    method: get
+    url: /dev-api/system/dict/type/list
+    params:
+      pageNum: 1
+      pageSize: 10
+  validate:
+    code: 200
+
+-
+  title: "查询字典数据列表-sys_user_sex"
+  request:
+    method: get
+    url: /dev-api/system/dict/data/list
+    params:
+      pageNum: 1
+      pageSize: 10
+      dictType: sys_user_sex
+  validate:
+    code: 200

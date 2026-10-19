@@ -1,0 +1,33 @@
+-
+  title: "查询登录日志列表"
+  request:
+    method: get
+    url: /dev-api/monitor/logininfor/list
+    params:
+      pageNum: 1
+      pageSize: 10
+  validate:
+    code: 200
+
+-
+  title: "查询操作日志列表"
+  request:
+    method: get
+    url: /dev-api/monitor/operlog/list
+    params:
+      pageNum: 1
+      pageSize: 10
+  validate:
+    code: 200
+
+-
+  title: "按模块名称搜索操作日志"
+  request:
+    method: get
+    url: /dev-api/monitor/operlog/list
+    params:
+      pageNum: 1
+      pageSize: 10
+      title: 用户管理
+  validate:
+    code: 200

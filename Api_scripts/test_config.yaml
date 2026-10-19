@@ -1,0 +1,22 @@
+-
+  title: "查询参数配置列表"
+  request:
+    method: get
+    url: /dev-api/system/config/list
+    params:
+      pageNum: 1
+      pageSize: 10
+  validate:
+    code: 200
+
+-
+  title: "按配置名称搜索"
+  request:
+    method: get
+    url: /dev-api/system/config/list
+    params:
+      pageNum: 1
+      pageSize: 10
+      configName: 用户管理
+  validate:
+    code: 200
