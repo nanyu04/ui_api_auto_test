@@ -10,6 +10,7 @@ class Api_common:
             "Content-Type": "application/json"
         }
 
+
         self.session.trust_env = False
     def request(self, path, **kwargs):
         url = path if path.startswith("http") else f"{self.base_url}/{path.lstrip('/')}"
@@ -60,4 +61,14 @@ class Api_common:
         print(f"请求方法: {res.request.method}")
         print(f"状态码: {res.status_code}")
         print(f"响应体: {res.text[:500]}")
+    def request(self,path,**kwargs):
+        url=path if path.startswith("http") else r"{self.base_url}/{path.lstrip('/')}"
+
+    #提供鉴权头
+    def set_token(self,token):
+        self.headers["Authorization"] =f"Bearer {token}"
+    #post的请求方法
+    def send_post(self,url=None,Json_date=None,headers=None):
+        full_url=self.base_url+url
+        res=self.session.post(full_url,json=Json_date,headers=self.headers)
         return res
