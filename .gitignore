@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# 虚拟环境
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+
+# 测试产物
+reports/
+temps/
+screenshot/
+logs/
+
+# 浏览器驱动（本地保留，不进版本库）
+chromedriver.exe
+
+# 其他
+.env
+.claude/
