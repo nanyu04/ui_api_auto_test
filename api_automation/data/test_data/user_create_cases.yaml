@@ -1,0 +1,34 @@
+﻿# 新增用户（POST /system/user）—— 正常 + 参数校验 + 边界值
+# overrides 会覆盖工厂生成的默认值
+- title: "正常新增用户"
+  overrides: {}
+  expect_code: 200
+
+- title: "用户名为空（@NotBlank）"
+  overrides: { userName: "" }
+  expect_code: 500
+  expect_msg: "用户账号不能为空"
+
+- title: "用户名 31 字符（超 @Size max=30）"
+  overrides: { userName: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500
+  expect_msg: "用户账号长度不能超过30个字符"
+
+- title: "用户名含脚本字符（@Xss）"
+  overrides: { userName: "<script>alert(1)</script>" }
+  expect_code: 500
+
+- title: "邮箱格式错误（@Email）"
+  overrides: { email: "not-an-email" }
+  expect_code: 500
+  expect_msg: "邮箱格式不正确"
+
+- title: "手机号 12 位（超长）"
+  overrides: { phonenumber: "158000000012" }
+  expect_code: 500
+  expect_msg: "手机号码长度不能超过11个字符"
+
+- title: "昵称 31 字符（超 @Size max=30）"
+  overrides: { nickName: "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" }
+  expect_code: 500
+  expect_msg: "用户昵称长度不能超过30个字符"

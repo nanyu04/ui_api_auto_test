@@ -1,0 +1,24 @@
+# 字典数据（/system/dict/data）
+# 注意：dictType 由用例运行时传入（指向新建的字典类型），此处用占位符 __DICT_TYPE__
+- title: "正常新增字典数据"
+  overrides: {}
+  expect_code: 200
+
+- title: "字典标签为空"
+  overrides: { dictLabel: "" }
+  expect_code: 500
+  expect_msg: "字典标签不能为空"
+
+- title: "字典键值为空"
+  overrides: { dictValue: "" }
+  expect_code: 500
+  expect_msg: "字典键值不能为空"
+
+- title: "字典标签 101 字符（超 max=100）"
+  overrides: { dictLabel: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500
+
+- title: "字典类型为空"
+  overrides: { dictType: "", dictLabel: "标签", dictValue: "1" }
+  expect_code: 500
+  expect_msg: "字典类型不能为空"

@@ -1,0 +1,24 @@
+﻿# 部门（/system/dept）
+- title: "正常新增部门"
+  overrides: {}
+  expect_code: 200
+
+- title: "部门名称为空"
+  overrides: { deptName: "" }
+  expect_code: 500
+  expect_msg: "部门名称不能为空"
+
+- title: "部门名称 31 字符"
+  overrides: { deptName: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500
+  expect_msg: "部门名称长度不能超过30个字符"
+
+- title: "邮箱格式错误"
+  overrides: { email: "bad-email" }
+  expect_code: 500
+  expect_msg: "邮箱格式不正确"
+
+- title: "联系电话 12 位"
+  overrides: { phone: "158000000012" }
+  expect_code: 500
+  expect_msg: "联系电话长度不能超过11个字符"

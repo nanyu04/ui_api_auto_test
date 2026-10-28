@@ -1,0 +1,28 @@
+# 菜单（/system/menu）—— 校验规则来自 SysMenu 实体 getter 注解
+- title: "正常新增菜单（目录）"
+  overrides: { menuType: "M" }
+  expect_code: 200
+
+- title: "菜单名称为空（@NotBlank）"
+  overrides: { menuName: "" }
+  expect_code: 500
+  expect_msg: "菜单名称不能为空"
+
+- title: "菜单名称 51 字符（超 max=50）"
+  overrides: { menuName: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500
+  expect_msg: "菜单名称长度不能超过50个字符"
+
+- title: "显示排序为 null（@NotNull）"
+  overrides: { orderNum: null }
+  expect_code: 500
+  expect_msg: "显示排序不能为空"
+
+- title: "菜单类型为空（@NotBlank）"
+  overrides: { menuType: "" }
+  expect_code: 500
+  expect_msg: "菜单类型不能为空"
+
+- title: "菜单名称含脚本字符（@Xss，属探索用例）"
+  overrides: { menuName: "<script>alert(1)</script>" }
+  expect_code: 500

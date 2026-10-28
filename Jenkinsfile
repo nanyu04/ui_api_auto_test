@@ -35,10 +35,8 @@ pipeline {
             steps {
                 bat '''
                     if exist reports rmdir /s /q reports
-                    if exist allure-results rmdir /s /q allure-results
                     mkdir reports
-                    mkdir allure-results
-                    .venv\\Scripts\\python.exe -m pytest -v --junitxml=reports/junit.xml --alluredir=allure-results
+                    .venv\\Scripts\\python.exe -m pytest -v --junitxml=reports/junit.xml --alluredir=reports/allure-results --clean-alluredir
                 '''
             }
         }
@@ -49,7 +47,7 @@ pipeline {
             // 第 1 步：先把测试结果发布给 Jenkins，必须在清理之前执行
             junit allowEmptyResults: true, testResults: 'reports/junit.xml'
             // 第 6 步配好 Allure 命令行工具后再打开下面这行
-            // allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+            // allure includeProperties: false, jdk: '', results: [[path: 'reports/allure-results']]
 
             // 第 2 步：清理构建现场（虚拟环境 + 缓存目录）
             echo '清理虚拟环境和临时文件'

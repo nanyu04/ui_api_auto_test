@@ -1,0 +1,19 @@
+﻿# 岗位（/system/post）
+- title: "正常新增岗位"
+  overrides: {}
+  expect_code: 200
+
+- title: "岗位编码为空"
+  overrides: { postCode: "" }
+  expect_code: 500
+  expect_msg: "岗位编码不能为空"
+
+- title: "岗位名称为空"
+  overrides: { postName: "" }
+  expect_code: 500
+  expect_msg: "岗位名称不能为空"
+
+- title: "岗位编码 65 字符（超 max=64）"
+  overrides: { postCode: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500
+  expect_msg: "岗位编码长度不能超过64个字符"

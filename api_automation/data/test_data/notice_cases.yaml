@@ -1,0 +1,17 @@
+# 通知公告（/system/notice）—— noticeTitle 有 @Xss 且 max=50
+- title: "正常新增公告"
+  overrides: {}
+  expect_code: 200
+
+- title: "公告标题为空"
+  overrides: { noticeTitle: "" }
+  expect_code: 500
+  expect_msg: "公告标题不能为空"
+
+- title: "公告标题 51 字符（超 max=50）"
+  overrides: { noticeTitle: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500
+
+- title: "公告标题含脚本字符（@Xss）"
+  overrides: { noticeTitle: "<script>alert(1)</script>" }
+  expect_code: 500

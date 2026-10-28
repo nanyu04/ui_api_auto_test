@@ -1,0 +1,30 @@
+# 字典类型（/system/dict/type）—— dictType 有 ^[a-z][a-z0-9_]*$ 正则约束
+- title: "正常新增字典类型"
+  overrides: {}
+  expect_code: 200
+
+- title: "字典名称为空"
+  overrides: { dictName: "" }
+  expect_code: 500
+  expect_msg: "字典名称不能为空"
+
+- title: "字典名称为空（@Size max=100 边界）"
+  overrides: { dictName: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500
+
+- title: "字典类型为空"
+  overrides: { dictType: "" }
+  expect_code: 500
+  expect_msg: "字典类型不能为空"
+
+- title: "字典类型以数字开头（违反正则 ^[a-z]）"
+  overrides: { dictType: "1abc" }
+  expect_code: 500
+
+- title: "字典类型含大写字母（违反正则）"
+  overrides: { dictType: "Abc_def" }
+  expect_code: 500
+
+- title: "字典类型含短横线（违反正则）"
+  overrides: { dictType: "abc-def" }
+  expect_code: 500

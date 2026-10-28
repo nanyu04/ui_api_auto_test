@@ -1,0 +1,15 @@
+"""
+framework — 框架核心
+
+这里把三个子系统（隔离 / Mock / 契约）组装在一起，
+对外提供 TestContext 和 MockServer，供 conftest 使用。
+"""
+from api_automation.framework.isolation import TestContext, TestIdentity
+from api_automation.framework.mock import MockServer, MockProfile, MockMode, current_mode
+from api_automation.framework.contract import registry, ContractRegistry
+
+__all__ = [
+    "TestContext", "TestIdentity",
+    "MockServer", "MockProfile", "MockMode", "current_mode",
+    "registry", "ContractRegistry",
+]

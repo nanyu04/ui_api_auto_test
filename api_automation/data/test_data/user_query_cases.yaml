@@ -1,0 +1,40 @@
+# 用户列表查询（GET /system/user/list）—— 分页与查询条件边界
+#
+# 关于 pageNum 的取值：PageDomain 的 reasonable 默认为 true，
+# PageHelper 会把 <=0 的页码自动纠正为第 1 页，
+# 所以 0 / 负数 并不会报错，而是"静默返回第一页" —— 这是需要固化下来的真实行为。
+- title: "默认分页"
+  params: {}
+  expect_code: 200
+
+- title: "pageNum=1,pageSize=10"
+  params: { pageNum: 1, pageSize: 10 }
+  expect_code: 200
+
+- title: "按用户名精确查询"
+  params: { pageNum: 1, pageSize: 10, userName: admin }
+  expect_code: 200
+
+- title: "按状态查询（停用）"
+  params: { pageNum: 1, pageSize: 10, status: "1" }
+  expect_code: 200
+
+- title: "pageSize 超大（1000）"
+  params: { pageNum: 1, pageSize: 1000 }
+  expect_code: 200
+
+- title: "pageNum=0（分页合理化纠正为第 1 页）"
+  params: { pageNum: 0, pageSize: 10 }
+  expect_code: 200
+
+- title: "pageNum 为负数（分页合理化纠正为第 1 页）"
+  params: { pageNum: -1, pageSize: 10 }
+  expect_code: 200
+
+- title: "pageNum 非数字（类型不匹配）"
+  params: { pageNum: abc, pageSize: 10 }
+  expect_code: 500
+
+- title: "username 带 SQL 注入载荷（#{} 预编译应无影响）"
+  params: { pageNum: 1, pageSize: 10, userName: "' or '1'='1" }
+  expect_code: 200

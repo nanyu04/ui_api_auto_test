@@ -1,0 +1,28 @@
+﻿# 角色（/system/role）
+- title: "正常新增角色"
+  overrides: {}
+  expect_code: 200
+
+- title: "角色名称为空"
+  overrides: { roleName: "" }
+  expect_code: 500
+  expect_msg: "角色名称不能为空"
+
+- title: "角色名称 31 字符"
+  overrides: { roleName: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500
+  expect_msg: "角色名称长度不能超过30个字符"
+
+- title: "权限字符为空"
+  overrides: { roleKey: "" }
+  expect_code: 500
+  expect_msg: "权限字符不能为空"
+
+- title: "显示顺序为 null"
+  overrides: { roleSort: null }
+  expect_code: 500
+  expect_msg: "显示顺序不能为空"
+
+- title: "角色标识含大写（后端未强制，属探索用例）"
+  overrides: { roleKey: "Auto_Role" }
+  expect_code: 200

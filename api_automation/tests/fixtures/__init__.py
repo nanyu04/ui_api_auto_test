@@ -1,0 +1,1 @@
+"""tests/fixtures — 跨模块共享的 fixture（在根 conftest 里显式注册为插件）"""

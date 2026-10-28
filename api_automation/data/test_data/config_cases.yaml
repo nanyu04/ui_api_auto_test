@@ -1,0 +1,27 @@
+# 参数配置（/system/config）
+- title: "正常新增参数"
+  overrides: {}
+  expect_code: 200
+
+- title: "参数名称为空"
+  overrides: { configName: "" }
+  expect_code: 500
+  expect_msg: "参数名称不能为空"
+
+- title: "参数键名为空"
+  overrides: { configKey: "" }
+  expect_code: 500
+  expect_msg: "参数键名不能为空"
+
+- title: "参数键值为空"
+  overrides: { configValue: "" }
+  expect_code: 500
+  expect_msg: "参数键值不能为空"
+
+- title: "参数名称 101 字符（超 max=100）"
+  overrides: { configName: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500
+
+- title: "参数键值 501 字符（超 max=500）"
+  overrides: { configValue: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500

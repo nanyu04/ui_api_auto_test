@@ -1,0 +1,27 @@
+# 定时任务（/monitor/job）
+- title: "正常新增定时任务"
+  overrides: {}
+  expect_code: 200
+
+- title: "任务名称为空"
+  overrides: { jobName: "" }
+  expect_code: 500
+  expect_msg: "任务名称不能为空"
+
+- title: "调用目标字符串为空"
+  overrides: { invokeTarget: "" }
+  expect_code: 500
+  expect_msg: "调用目标字符串不能为空"
+
+- title: "cron 表达式为空"
+  overrides: { cronExpression: "" }
+  expect_code: 500
+  expect_msg: "cron执行表达式不能为空"
+
+- title: "cron 表达式非法"
+  overrides: { cronExpression: "not a cron" }
+  expect_code: 500
+
+- title: "任务名称 65 字符（超 max=64）"
+  overrides: { jobName: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" }
+  expect_code: 500
